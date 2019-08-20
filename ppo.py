@@ -8,7 +8,7 @@ import torch.optim as optim
 from torch.distributions import Categorical
 
 #Hyperparameters
-learning_rate = 0.0005
+learning_rate = 0.00035
 gamma         = 0.98
 T_horizon     = 20 # 몇 timestep 동안 data를 모아 policy를 update할지
 
@@ -98,7 +98,7 @@ class PPO(nn.Module):
             self.optimizer.step()
         
 def main():
-    env = gym.make('CartPole-v1')
+    env = gym.make('CartPole-v1') # 이 부분을 rnn controller가 확률 p로 만들어낸 구조A로, accuracy R로 더 좋은 controller를 만든다. 
     model = PPO()
     score = 0.0
     print_interval = 20 # 몇개마다 점수 찍을지
